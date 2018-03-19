@@ -2,7 +2,13 @@ package com.eagle.singleton;
 
 /**
  * 单例模式
- * 线程安全：双重检查锁（同步代码块）
+ * 双检锁/双重校验锁（DCL，即 double-checked locking）
+ * JDK 版本：JDK1.5 起
+ * 是否 Lazy 初始化：是
+ * 是否多线程安全：是
+ * 实现难度：较复杂
+ * 描述：这种方式采用双锁机制，安全且在多线程情况下能保持高性能。
+ * getInstance() 的性能对应用程序很关键。
  * @author EagleHao
  */
 public class Singleton1 {
@@ -42,6 +48,9 @@ public class Singleton1 {
 		return singleton;
 	}
 	
+	/**
+	 * 将构造函数私有化，这样该类就不会被new实例化
+	 */
 	private Singleton1() {
 		
 	}
